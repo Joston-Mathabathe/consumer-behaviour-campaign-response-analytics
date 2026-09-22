@@ -1,0 +1,26 @@
+Feature,Importance
+num__euribor3m,0.1435947818373392
+num__age,0.08630499400704084
+num__nr_employed,0.06956177480320025
+num__emp_var_rate,0.0676980181761178
+num__cons_conf_idx,0.036711156625841415
+num__campaign,0.035262469615076945
+num__cons_price_idx,0.03134879987062323
+num__pdays,0.017629878288044087
+cat__poutcome_success,0.01623681510073292
+num__previous_success,0.015690773934932255
+cat__education_university.degree,0.01559215505793893
+cat__housing_no,0.014978478724723278
+num__was_contacted_before,0.014757367018401527
+cat__housing_yes,0.014583973264232523
+cat__job_admin.,0.014498924190424499
+cat__day_of_week_mon,0.01440304973290343
+cat__contact_cellular,0.014098937515933309
+cat__marital_married,0.01376721209825703
+cat__month_may,0.013574904773953402
+cat__education_high.school,0.013417644947713454
+cat__campaign_intensity_1 contact,0.013058346205142684
+cat__day_of_week_thu,0.013021023993061749
+cat__job_blue-collar,0.013013348501726259
+cat__day_of_week_fri,0.01300939273204172
+cat__day_of_week_wed,0.012848050783720364
