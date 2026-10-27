@@ -1,0 +1,13 @@
+age_group,contact,customers,subscription_rate_pct
+26-35,cellular,9845,14.86
+26-35,telephone,5002,5.54
+36-45,cellular,7532,11.23
+36-45,telephone,5312,4.65
+46-55,cellular,5111,11.35
+46-55,telephone,3138,4.37
+56-65,cellular,1904,20.27
+56-65,telephone,1059,6.14
+66+,cellular,552,48.55
+66+,telephone,67,32.84
+<=25,cellular,1200,25.83
+<=25,telephone,466,8.37

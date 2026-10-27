@@ -1,0 +1,11 @@
+job,poutcome,customers,subscription_rate_pct
+retired,success,158,74.05
+student,success,118,71.19
+admin.,success,428,66.82
+technician,success,211,65.88
+blue-collar,success,119,49.58
+retired,failure,230,27.39
+student,failure,163,26.38
+student,nonexistent,594,24.92
+retired,nonexistent,1332,19.07
+technician,failure,618,17.8

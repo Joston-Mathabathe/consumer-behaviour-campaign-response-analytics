@@ -1,0 +1,59 @@
+{
+  "records": 41188,
+  "variables": 28,
+  "subscribers": 4640,
+  "subscription_rate": 0.11265417111780131,
+  "avg_age": 40.02406040594348,
+  "avg_campaign_contacts": 2.567592502670681,
+  "exact_duplicate_rows": 12,
+  "share_never_previously_contacted": 0.9632174419733903,
+  "channel_within_period": {
+    "periods_with_both_channels": 7,
+    "cellular_higher_in_periods": 6,
+    "cellular_rate_period_adjusted": 0.18591847987777968,
+    "telephone_rate_period_adjusted": 0.13174544101228136
+  },
+  "segments_k": 4,
+  "impact": {
+    "call_everyone_profit": 98010.0,
+    "best_pct_contacted": 0.8282350084972081,
+    "best_profit": 99085.0,
+    "subscribers_captured_pct": 0.9568965517241379,
+    "calls_saved_pct": 0.1717649915027919,
+    "profit_uplift_vs_call_everyone": 1075.0,
+    "cost_per_call": 5.0,
+    "value_per_subscriber": 150.0,
+    "top_decile_lift": 4.751001736692333,
+    "top_3_deciles_capture_pct": 0.7370689655172413,
+    "test_set_contacts": 8238,
+    "break_even_conversion_rate": 0.03333333333333333,
+    "capacity_constrained": {
+      "20pct": {
+        "model_capture": 0.6670258620689655,
+        "random_capture": 0.20211216314639477,
+        "conversion_rate": 0.3717717717717718
+      },
+      "30pct": {
+        "model_capture": 0.7392241379310345,
+        "random_capture": 0.30310755037630494,
+        "conversion_rate": 0.27472967561073286
+      },
+      "50pct": {
+        "model_capture": 0.8286637931034483,
+        "random_capture": 0.49490167516387473,
+        "conversion_rate": 0.18861908265881777
+      }
+    },
+    "out_of_time": {
+      "call_everyone_profit": 339810.0,
+      "best_pct_contacted": 1.0,
+      "best_profit": 339810.0,
+      "subscribers_captured_pct": 1.0,
+      "calls_saved_pct": 0.0,
+      "profit_uplift_vs_call_everyone": 0.0,
+      "cost_per_call": 5.0,
+      "value_per_subscriber": 150.0,
+      "top_decile_lift": 2.137276393242107
+    }
+  }
+}
