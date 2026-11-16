@@ -14,7 +14,7 @@ A bank's telemarketing team promotes term deposits. Only **11.3%** of contacts s
 | 2 | **Long call sequences rarely end in a sale** | Customers whose campaign stopped after 1 call converted at 13.0% vs 3.6% for those who reached 10+; the "over-contacted" segment averages 12.6 calls for 3.9% conversion. These are *final* call counts and customers who subscribe stop being called, so this is not the conversion rate of the 10th call | Pilot a cap of ~3–4 attempts and redeploy the freed capacity |
 | 3 | **Cellular outperforms landline, but less than the raw gap suggests** | 14.7% vs 5.2% pooled; higher in all 6 age bands and in 6 of the 7 campaign periods where both channels ran. Holding period constant the gap is ~18.6% vs 13.2% (`contact_by_period.csv`) | Prefer cellular, and A/B test it: landline calls cluster in the earliest, lowest-converting part of the file |
 | 4 | **Ranking customers pre-call concentrates effort** | Top decile converts at **4.8×** average; calling the top 30% reaches **74%** of subscribers (random: 30%) | Score and work the list top-down |
-| 5 | **Targeting value depends on call cost and capacity** | At $5/call & $150/subscriber break-even conversion is 3.3%, so almost everyone is worth calling and uplift is small (+$1.1k). At $20/call the optimal contact share falls to ~16% and uplift is ~$87k on the test set | Set the cutoff from the real cost of a call, not a default 0.5 probability |
+| 5 | **Targeting value depends on call cost and capacity** | At $5/call & $150/subscriber break-even conversion is 3.3%, so almost everyone is worth calling and uplift is small (roughly +$1k). At $20/call the optimal contact share falls to ~16% and uplift is ~$87k on the test set | Set the cutoff from the real cost of a call, not a default 0.5 probability |
 | 6 | **Models decay on later campaigns** | Out-of-time ROC-AUC 0.73 vs 0.81 random split; subscription rate rose from ~3% in the earliest decile of calls to ~46% in the latest | Monitor drift and re-train regularly |
 
 > Cost and value inputs are **scenario assumptions** (`src/config.py`), not data. The dataset has no revenue or cost fields; the full sensitivity grid is in `data/processed/profit_sensitivity.csv`.
@@ -43,6 +43,13 @@ A bank's telemarketing team promotes term deposits. Only **11.3%** of contacts s
 - Segments are descriptive and depend on selected variables.
 - The `duplicates` (12 exact rows) were retained as they may be distinct clients.
 
+## Power BI dashboard
+`powerbi/Consumer_Campaign_Analytics.pbix` is built on `data/processed/powerbi_customer_campaign.csv` (open it in Power BI Desktop; you may need to re-point the data source to your local path).
+
+![Executive Overview](powerbi/Executive%20Overview.png)
+
+Other pages: [Customer Segmentation](powerbi/Customer%20Segmentation.png) · [Campaign Effectiveness](powerbi/Campaign%20Effectiveness.png) · [Predictive Targeting](powerbi/Predictive%20Targeting.png)
+
 ## Reproduce
 ```bash
 pip install -r requirements.txt
@@ -50,19 +57,22 @@ python -m src.run_pipeline   # regenerates data/processed/* and images/*
 python sql/run_queries.py    # runs the SQL analyses (SQLite)
 python -m pytest -q          # 9 tests: leakage, chronology, gains/profit/sensitivity logic, segmentation
 ```
-Or `make all`. The pipeline takes about 2 minutes. Notebooks are committed with outputs; re-execute them with `pip install -r requirements-notebooks.txt && make notebooks`.
+Or `make all`. The pipeline takes about 2 minutes. Model-derived figures (lift, profit uplift) can shift slightly across scikit-learn versions because of random-forest implementation changes; the committed outputs and README figures were generated with the versions in `requirements.txt` at the time, so small differences (e.g. top-decile lift 4.75-4.8x) are expected. Notebooks are committed with outputs; re-execute them with `pip install -r requirements-notebooks.txt && make notebooks`.
 
 ## Repository map
 ```
 src/            data.py · segmentation.py · modelling.py · business.py · run_pipeline.py
 notebooks/      01 audit · 02 EDA · 03 segmentation · 04 modelling · 05 business insights (executed)
 sql/            window-function queries + runner (SQLite)
-powerbi/        dashboard build plan (the .pbix is not included)
+powerbi/        Power BI dashboard (.pbix) + screenshots of each page
 data/           raw/ · processed/ (tables, gains, profit, sensitivity, Power BI extract)
 docs/           data dictionary
 tests/          pytest suite
-.github/        CI (runs the tests)
 ```
 
 ## Data
 Moro, S., Rita, P., & Cortez, P. (2014). *Bank Marketing* [UCI Machine Learning Repository]. `bank-additional-full`, 41,188 rows, 20 inputs. The dataset is the property of its authors and is **not** covered by this repo's MIT licence; check the UCI page for its terms. The copy in `data/raw/` carries a few extra project-added columns, described in `docs/DATA_DICTIONARY.md`.
+
+## Licence
+Code is released under the MIT Licence (see `LICENSE`). The Bank Marketing dataset is excluded from this licence, see the Data section above.
+
